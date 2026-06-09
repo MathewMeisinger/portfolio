@@ -1,0 +1,79 @@
+{% load static %}
+
+<section id="contact">
+
+    <div class="container px-4 py-5" id="hanging-icons"> 
+
+    <h2 class="pb-2 border-bottom">Connect with me</h2> 
+
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+
+        <div class="col d-flex align-items-start"> 
+
+            <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"> 
+                <img src="{% static 'images/github.png' %}" alt="Github Icon">
+            </div> 
+                
+            <div> 
+                <h3 class="fs-2 text-body-emphasis">GitHub</h3> 
+                <p>For a more detailed look at my projects, collaborations and public repositories, feel free to have a look at my GitHub Profile and give me a follow!</p> <a href="https://github.com/MathewMeisinger" class="btn btn-primary">GitHub</a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start"> 
+                
+            <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"> 
+                <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn Icon">
+            </div> 
+                
+            <div> 
+                <h3 class="fs-2 text-body-emphasis">LinkedIn</h3> 
+                <p>Have a detailed look at my LinkedIn profile where I have shared all my qualifications, projects, skills and work experience. Feel free to connect with me!</p> <a href="https://www.linkedin.com/in/mathew-meisinger-3b163bb3/" class="btn btn-primary">LinkedIn</a> 
+            </div> 
+        </div> 
+
+        <div class="col d-flex align-items-start"> 
+
+            <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"> 
+                <img src="{% static 'images/discord.png' %}" alt="Discord Icon">
+            </div> 
+            
+            <div> 
+                <h3 class="fs-2 text-body-emphasis">Discord</h3> 
+                <p>If Discord is your preffered method of communication you are more than welcome to have a look at my profile and contact me there!</p> 
+                <a href="https://discord.com/users/325262245946851338" class="btn btn-primary">Discord</a> 
+            </div> 
+        </div>
+            
+        </div>
+        <section id="contact">
+
+            <h5>Send me an Email</h5>
+
+            <form method="POST" class="contact-form">
+                {% csrf_token %}
+
+                {{ form.name }}
+                {{ form.email }}
+                {{ form.subject }}
+                {{ form.message }}
+
+                <button type="submit" class="btn btn-primary">
+                    Send Message
+                </button>
+
+            </form>
+
+        </section>
+
+        {% if messages %}
+            {% for message in messages %}
+                <script>
+                    alert("{{ message }}");
+                </script>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+</section>
+

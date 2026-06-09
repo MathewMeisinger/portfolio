@@ -1,0 +1,78 @@
+{% load static %}
+
+<section id="projects">
+
+    <div class="container px-4 py-5" id="featured-3"> 
+    <h2 class="pb-2 border-bottom">Some of my Projects</h2> 
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+
+            <div class="feature col"> 
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3"> 
+                    <img src="{% static 'images/website.png' %}" alt="Web Page Icon">
+                </div> 
+                <h3 class="fs-2 text-body-emphasis">e-Commerce Web Application</h3> 
+                <p>
+                    This project is a Django based eCommerce web application that supports roles for buyers and vendors, whilst also providing stores, products, carts, orders, reviews, REST API endpoints, and X integration.
+                    It extends a marketplace-style workflow where vendors can create stores and products, buyers can browse listings and place orders, and selected events can trigger social media posts.<br><br>
+                    The project includes both traditional Django views and API endpoints for stores and products. It also includes email-based invoice sending during checkout and X/Twitter posting through the Tweepy client.
+                </p>
+                <h5>Technologies used:</h5>
+                <ul>
+                    <li>Python</li>
+                    <li>HTML, CSS</li>
+                    <li>Django, Django REST Framework</li>
+                    <li>Tweepy</li>
+                    <li>PyMySQL and mariadb</li>
+                    <li>python-dotenv</li>
+                </ul>
+                <a href="https://github.com/MathewMeisinger/eCommerce_application" class="icon-link">View the GitHub Repo<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> 
+            </div>
+
+            <div class="feature col">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3"> 
+                    <img src="{% static 'images/data_analysis.png' %}" alt="Data Analysis Icon">
+                </div> 
+                <h3 class="fs-2 text-body-emphasis">Exploratory Data Analysis</h3> 
+                <p>
+                    This project is an exploratory data analysis (EDA) study of an automobile dataset.
+                    The notebook focuses on cleaning the raw data, preparing the columns for analysis, and investigating relationships between vehicle price, fuel efficiency, engine size, horsepower, and manufacturer trends.
+                    <br><br>
+                    Conducted end-to-end data preparation and analysis on a vehicle dataset, including data cleaning, preprocessing, and exploratory analysis.
+                    Generated insights into vehicle pricing, fuel economy, engine characteristics, and manufacturer trends through statistical analysis and data visualization.
+                </p>
+                <h5>Technologies used:</h5>
+                <ul>
+                    <li>Python</li>
+                    <li>Jupyter Notebook</li>
+                    <li>Pandas</li>
+                    <li>NumPy</li>
+                    <li>MatPlotLib</li>
+                    <li>Seaborn</li>
+                </ul>
+                <a href="https://github.com/MathewMeisinger/data_analysis" class="icon-link">View the GitHub Repo<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> 
+            </div> 
+        
+            <div class="feature col"> 
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3"> 
+                    <img src="{% static 'images/machine_learning.png' %}" alt="Machine Learning Icon">
+                </div> 
+                <h3 class="fs-2 text-body-emphasis">Sentiment Analysis: Amazon Product Reviews</h3>
+                <p>
+                    This project performs sentiment analysis on Amazon product reviews using Python natural language processing libraries.
+                    The main script allows a user to load a review dataset, preprocess the review text, remove stop words, analyse the sentiment of individual reviews, and compare the similarity between two reviews.
+                    <br><br>
+                    The project is implemented as a menu-driven command-line application and is designed to demonstrate practical NLP preprocessing and review analysis workflows.
+                </p>
+                <h5>Technologies used:</h5>
+                <ul>
+                    <li>Python</li>
+                    <li>Pandas</li>
+                    <li>SpaCy</li>
+                    <li>TextBlob</li>
+                </ul>
+                <a href="https://github.com/MathewMeisinger/sentiment_analysis" class="icon-link">View the GitHub Repo<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> 
+            </div> 
+        </div> 
+    </div>
+
+</section>
