@@ -132,6 +132,10 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://onrender.com",
+    "https://*.onrender.com",
+]
 
 # email backend
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
