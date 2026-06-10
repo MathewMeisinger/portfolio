@@ -38,7 +38,7 @@ SECRET_KEY = (
 DEBUG = env_bool("DEBUG", False)
 
 ALLOWED_HOSTS = [
-    'mathewmeisinger.pythonanywhere.com'
+    'mathewmeisinger.pythonanywhere.com',
     'mathewmeisinger.onrender.com',
     'localhost',
     '127.0.0.1',
@@ -154,5 +154,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CSRF_TRUSTED_ORIGINS = [
     "https://onrender.com",
     "https://*.onrender.com",
-    "https://*.pythonanywhere.com"
+    "https://*.pythonanywhere.com",
 ]
