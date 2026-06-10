@@ -55,19 +55,40 @@
 
             <h5>Send me an Email</h5>
 
-            <form method="POST" action="#contact-form" class="contact-form">
-                {% csrf_token %}
-
-                {{ form.name }}
-                {{ form.email }}
-                {{ form.subject }}
-                {{ form.message }}
-
-                {% if form.errors %}
-                    <div class="alert alert-danger mt-3">
-                        Please correct the errors in the form and try again.
-                    </div>
-                {% endif %}
+            <form
+                method="POST"
+                action="https://formspree.io/f/mzdqvjob"
+                class="contact-form"
+            >
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    class="contact-input"
+                    maxlength="100"
+                    required
+                >
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email Address"
+                    class="contact-input"
+                    required
+                >
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder="Subject"
+                    class="contact-input"
+                    required
+                >
+                <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    class="contact-input"
+                    rows="6"
+                    required
+                ></textarea>
 
                 <button type="submit" class="btn btn-primary">
                     Send Message
@@ -77,17 +98,10 @@
 
         </section>
 
-        {% if messages %}
-            {% for message in messages %}
-                <script>
-                    alert("{{ message }}");
-                </script>
-            {% endfor %}
-        {% endif %}
-
 
     </div>
 
 </section>
+
 
 
