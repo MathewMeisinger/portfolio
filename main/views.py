@@ -1,7 +1,9 @@
 # imports
+from django.conf import settings
 from django.contrib import messages
+from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
-from django.core.mail import send_mail
+
 from .forms import ContactForm
 
 
@@ -21,28 +23,42 @@ def home(request):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            # Send the contact form contents as an email
-            # once validation passes.
-            send_mail(
-                subject=form.cleaned_data["subject"],
-                message=f"""
-Name: {form.cleaned_data['name']}
-Email: {form.cleaned_data['email']}
+            # Send the contact form contents as an email once validation passes.
+            try:
+                email_body = """
+Name: {name}
+Email: {email}
 
 Message:
-{form.cleaned_data['message']}
-""",
-                from_email=form.cleaned_data["email"],
-                recipient_list=["mathew.meisinger@gmail.com"],
-            )
+{message}
+""".strip().format(
+                    name=form.cleaned_data["name"],
+                    email=form.cleaned_data["email"],
+                    message=form.cleaned_data["message"],
+                )
 
-            # Show a one-time success message after the redirect.
-            messages.success(
-                request,
-                "Your mail has been sent! I will get back to you ASAP!"
-            )
-            # Redirect to avoid duplicate form submissions on page refresh.
-            return redirect('home')
+                email = EmailMessage(
+                    subject=form.cleaned_data["subject"],
+                    body=email_body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    to=[settings.CONTACT_RECIPIENT_EMAIL],
+                    reply_to=[form.cleaned_data["email"]],
+                )
+                email.send(fail_silently=False)
+
+                # Show a one-time success message after the redirect.
+                messages.success(
+                    request,
+                    "Your mail has been sent! I will get back to you ASAP!"
+                )
+                # Redirect to avoid duplicate form submissions on page refresh.
+                return redirect('home')
+            except Exception:
+                messages.error(
+                    request,
+                    "Sorry, your message could not be sent right now. "
+                    "Please try again later."
+                )
 
     # Render the homepage with either the blank form or the validated form.
     return render(request, 'main/index.html', {'form': form})
