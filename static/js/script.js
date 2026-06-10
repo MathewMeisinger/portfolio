@@ -46,3 +46,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const contactForm = document.getElementById("contact-formspree-form");
+    const contactAlert = document.getElementById("contact-form-alert");
+
+    // Exit early on pages where the contact form is not rendered.
+    if (!contactForm || !contactAlert) return;
+
+    contactForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const submitButton = contactForm.querySelector("button[type='submit']");
+        const originalButtonText = submitButton.textContent;
+        const formData = new FormData(contactForm);
+
+        contactAlert.className = "alert d-none";
+        contactAlert.textContent = "";
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+            if (response.ok) {
+                contactAlert.className = "alert alert-success";
+                contactAlert.textContent =
+                    "Thank you! Your message has been sent. " +
+                    "I’ll get back to you as soon as possible.";
+                contactForm.reset();
+            } else {
+                contactAlert.className = "alert alert-danger";
+                contactAlert.textContent =
+                    "Sorry, your message could not be sent right now. " +
+                    "Please try again later.";
+            }
+        } catch (error) {
+            contactAlert.className = "alert alert-danger";
+            contactAlert.textContent =
+                "Sorry, your message could not be sent right now. " +
+                "Please try again later.";
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
+    });
+
+});
